@@ -7,3 +7,10 @@ backend/build
 VeTubeClient/.env
 *.properties
 backend/src/main/resources/application.properties
+
+
+
+VeTubeServer/build
+/VeTubeServer/.gradle
+/VeTubeServer/.idea
+/VeTubeServer/gradle
