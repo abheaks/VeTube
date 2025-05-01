@@ -1,0 +1,9 @@
+frontend/node_modules
+.history
+backend/build
+/backend/.gradle
+/backend/.idea
+/backend/gradle
+VeTubeClient/.env
+*.properties
+backend/src/main/resources/application.properties

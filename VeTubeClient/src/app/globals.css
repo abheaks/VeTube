@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 259 70% 10%; /* Dark Purple */
+    --card: 259 100% 98%; /* Lightest Purple */
+    --card-foreground: 259 70% 10%; /* Dark Purple */
+    --popover: 259 100% 98%; /* Lightest Purple */
+    --popover-foreground: 259 70% 10%; /* Dark Purple */
+    --primary: 259 70% 40%; /* Purple-700 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 259 70% 60%; /* Purple-500 */
+    --secondary-foreground: 259 70% 10%; /* Dark Purple */
+    --muted: 259 100% 95%; /* Very Light Purple */
+    --muted-foreground: 259 70% 30%; /* Medium Dark Purple */
+    --accent: 259 100% 90%; /* Light Purple */
+    --accent-foreground: 259 70% 10%; /* Dark Purple */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 259 100% 90%; /* Light Purple */
+    --input: 259 100% 90%; /* Light Purple */
+    --ring: 259 70% 40%; /* Purple-700 */
+    --chart-1: 270 70% 60%; /* Purple */
+    --chart-2: 280 60% 50%; /* Purple */
+    --chart-3: 260 80% 40%; /* Purple */
+    --chart-4: 290 70% 55%; /* Purple */
+    --chart-5: 250 85% 60%; /* Purple */
+    --radius: 0.5rem;
+    --sidebar-background: 259 100% 95%; /* Very Light Purple */
+    --sidebar-foreground: 259 70% 20%; /* Dark Purple */
+    --sidebar-primary: 259 70% 10%; /* Darkest Purple */
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 259 100% 90%; /* Light Purple */
+    --sidebar-accent-foreground: 259 70% 10%; /* Dark Purple */
+    --sidebar-border: 259 100% 90%; /* Light Purple */
+    --sidebar-ring: 259 70% 40%; /* Purple-700 */
+  }
+  .dark {
+    --background: 259 70% 15%; /* Dark Purple */
+    --foreground: 0 0% 100%;
+    --card: 259 70% 15%; /* Dark Purple */
+    --card-foreground: 0 0% 98%;
+    --popover: 259 70% 15%; /* Dark Purple */
+    --popover-foreground: 0 0% 98%;
+    --primary: 259 70% 40%; /* Purple-700 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 259 70% 60%; /* Purple-500 */
+    --secondary-foreground: 0 0% 98%;
+    --muted: 259 70% 15%; /* Dark Purple */
+    --muted-foreground: 259 100% 60%; /* Light Purple */
+    --accent: 259 70% 15%; /* Dark Purple */
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 259 70% 15%; /* Dark Purple */
+    --input: 259 70% 15%; /* Dark Purple */
+    --ring: 259 70% 40%; /* Purple-700 */
+    --chart-1: 270 70% 60%; /* Purple */
+    --chart-2: 280 60% 50%; /* Purple */
+    --chart-3: 260 80% 40%; /* Purple */
+    --chart-4: 290 70% 55%; /* Purple */
+    --chart-5: 250 85% 60%; /* Purple */
+    --sidebar-background: 259 70% 10%; /* Darkest Purple */
+    --sidebar-foreground: 259 100% 90%; /* Light Purple */
+    --sidebar-primary: 259 70% 40%; /* Purple-700 */
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 259 70% 15%; /* Dark Purple */
+    --sidebar-accent-foreground: 259 100% 90%; /* Light Purple */
+    --sidebar-border: 259 70% 15%; /* Dark Purple */
+    --sidebar-ring: 259 70% 40%; /* Purple-700 */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
