@@ -65,7 +65,7 @@ To optimize performance and reduce database load, **Redis caching** is implement
 ### 🔧 Tech Used:
 - [Spring Boot Cache Abstraction](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#io.caching)
 - [AWS ElastiCache for Redis](https://aws.amazon.com/elasticache/redis/)
-- Local Redis for development
+- Local Redis for development(default port:6379)
 
 ### 📈 Benefits:
 - ⚡ Faster API responses
