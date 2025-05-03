@@ -9,6 +9,7 @@
   - **Media Processing:** FFmpeg via Lambda Layers  
 - **Storage & Messaging:** Amazon S3, Amazon SQS  
 - **Caching:** Redis with AWS ElastiCache  
+- **CDN:** Amazon CloudFront  
 - **Infrastructure as Code:** Terraform, AWS IAM  
 - **Monitoring & Logging:** Amazon CloudWatch Logs  
 - **Architecture Pattern:** Event-driven, serverless microservices
@@ -43,7 +44,12 @@ The system uses a modern serverless architecture built on AWS to deliver scalabl
    Processed videos are uploaded back to:  
    `s3://vetubebucket/processed/`
 
-6. **Monitoring:**  
+6. **CDN Integration:**  
+   - Processed videos are served via **Amazon CloudFront**.
+   - S3 processed bucket is configured as the CloudFront origin.
+   - Video URLs are updated in metadata to use CDN URLs (e.g., `https://d123.cloudfront.net/video.mp4`).
+
+7. **Monitoring:**  
    System activity and logs are tracked using **CloudWatch Logs**.
 
 ---
@@ -65,12 +71,30 @@ To optimize performance and reduce database load, **Redis caching** is implement
 ### 🔧 Tech Used:
 - [Spring Boot Cache Abstraction](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#io.caching)
 - [AWS ElastiCache for Redis](https://aws.amazon.com/elasticache/redis/)
-- Local Redis for development(default port:6379)
+- Local Redis for development (default port: 6379)
 
 ### 📈 Benefits:
 - ⚡ Faster API responses
 - 🔁 Reduced load on the database
 - 🌐 Improves scalability of metadata-heavy operations
+
+---
+
+## 🌐 CDN Delivery (Amazon CloudFront)
+
+To deliver videos with low latency and high performance globally, **Amazon CloudFront** is integrated as the CDN.
+
+### 🚀 How It Works:
+- CloudFront is set up with the processed S3 bucket as origin.
+- Videos are cached at edge locations closer to the user.
+- On upload, video URLs in metadata are updated to point to the CloudFront distribution.
+- This ensures faster video load times and better playback performance.
+
+### 🔧 Benefits:
+- 🚀 Low latency video streaming
+- 💡 Reduced S3 bandwidth costs
+- 🌍 Global reach with edge caching
+- 🔐 Optional signed URLs for secure access
 
 ---
 
@@ -81,6 +105,7 @@ To optimize performance and reduce database load, **Redis caching** is implement
 - 🌍 **Cloud-native design using S3, SQS, and Lambda**
 - 🛡️ **Infrastructure-as-Code with Terraform**
 - 🧠 **Metadata caching with Redis + ElastiCache**
+- 🌐 **High-performance video delivery with Amazon CloudFront**
 - 💬 **Modular microservice architecture – easy to extend**
 - 📈 **Real-time logging and monitoring with CloudWatch**
 
@@ -91,7 +116,7 @@ To optimize performance and reduce database load, **Redis caching** is implement
 - Thumbnail generation
 - Multi-resolution adaptive streaming (HLS)
 - User authentication and playlists
-- CDN integration for video delivery
+- Signed CloudFront URLs for video security
 - User Interaction (Like, Comment)
 - Load Balancing
 
@@ -100,6 +125,8 @@ To optimize performance and reduce database load, **Redis caching** is implement
 ## 📸 Screenshots
 
 <img width="976" alt="Screenshot 2025-04-24 at 10 14 31 PM" src="https://github.com/user-attachments/assets/217b4e24-9de4-4286-adcc-06a4f6924913" />
+<img width="976" alt="Screenshot 2025-04-24 at 10 14 31 PM" src="https://github.com/user-attachments/assets/a660bb1d-eca4-492f-b5b2-2849d8a5e26c" />
+
 
 ---
 
