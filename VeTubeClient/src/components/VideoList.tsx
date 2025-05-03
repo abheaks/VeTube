@@ -22,6 +22,8 @@ const VideoList = () => {
           throw new Error("Failed to fetch videos");
         }
         const data = await response.json();
+        console.log("Fetched videos:", data);
+
         setVideos(data);
       } catch (error) {
         setError(error.message);

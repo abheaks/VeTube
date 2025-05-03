@@ -2,6 +2,7 @@ package com.vetube.vetube.models
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
+import java.io.Serializable
 
 @Document(collection = "videos")
 data class VideoMetaData(
@@ -13,4 +14,4 @@ data class VideoMetaData(
     val url: String,
     val thumbnailUrl: String,
     val timestamp: Long
-)
+) : Serializable
