@@ -8,6 +8,7 @@
   - **Serverless Compute:** AWS Lambda (Python)
   - **Media Processing:** FFmpeg via Lambda Layers  
 - **Storage & Messaging:** Amazon S3, Amazon SQS  
+- **Caching:** Redis with AWS ElastiCache  
 - **Infrastructure as Code:** Terraform, AWS IAM  
 - **Monitoring & Logging:** Amazon CloudWatch Logs  
 - **Architecture Pattern:** Event-driven, serverless microservices
@@ -47,12 +48,39 @@ The system uses a modern serverless architecture built on AWS to deliver scalabl
 
 ---
 
+## 🧠 Caching Layer (Redis + ElastiCache)
+
+To optimize performance and reduce database load, **Redis caching** is implemented using **AWS ElastiCache**. The Spring Boot backend uses Redis to store frequently accessed metadata such as video titles, descriptions, and view counts.
+
+### 🔄 What is Cached?
+- Video metadata (`title`, `views`, `uploader`)
+- Trending/recently viewed video lists
+- User-specific content like watch history
+
+### ⚙️ How It Works:
+- Uses `@Cacheable`, `@CachePut`, and `@CacheEvict` annotations in Spring Boot.
+- Redis TTL (Time-To-Live) is configured for auto-expiry of cache entries.
+- Caching fallback to DB ensures fault tolerance.
+
+### 🔧 Tech Used:
+- [Spring Boot Cache Abstraction](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#io.caching)
+- [AWS ElastiCache for Redis](https://aws.amazon.com/elasticache/redis/)
+- Local Redis for development
+
+### 📈 Benefits:
+- ⚡ Faster API responses
+- 🔁 Reduced load on the database
+- 🌐 Improves scalability of metadata-heavy operations
+
+---
+
 ## ✅ Key Highlights
 
 - ⚙️ **Scalable serverless video pipeline**
 - 🎞️ **Efficient transcoding with FFmpeg on AWS Lambda**
 - 🌍 **Cloud-native design using S3, SQS, and Lambda**
 - 🛡️ **Infrastructure-as-Code with Terraform**
+- 🧠 **Metadata caching with Redis + ElastiCache**
 - 💬 **Modular microservice architecture – easy to extend**
 - 📈 **Real-time logging and monitoring with CloudWatch**
 
@@ -73,14 +101,12 @@ The system uses a modern serverless architecture built on AWS to deliver scalabl
 
 <img width="976" alt="Screenshot 2025-04-24 at 10 14 31 PM" src="https://github.com/user-attachments/assets/217b4e24-9de4-4286-adcc-06a4f6924913" />
 
-
-
 ---
 
 ## 📁 Repository Structure
 
 ```bash
 ├── VeTubeClient/            # Next.js UI
-├── VeTubeServer/         # Spring Boot metadata API
-├── lambda-video-worker/ # Python Lambda for FFmpeg processing
-├── terraform/           # IaC for AWS resources
+├── VeTubeServer/           # Spring Boot metadata API
+├── lambda-video-worker/    # Python Lambda for FFmpeg processing
+├── terraform/              # IaC for AWS resources
